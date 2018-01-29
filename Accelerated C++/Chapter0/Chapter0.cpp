@@ -18,6 +18,6 @@ int main()
 	std::cout << "int main()" << std::endl << "{" << std::endl;
 	std::cout << "\t" << "std::cout << \"Hello, world!\" << std::endl;" << std::endl;
 	std::cout << "\t" << "return 0;" << std::endl << "}" << std::endl;
-    return 0;
+	return 0;
 }
 
