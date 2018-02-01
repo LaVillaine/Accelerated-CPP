@@ -38,6 +38,14 @@ int main()
 		}
 	}
 
+	// exercise 1-6
+	std::cout << "What is your name? ";
+	std::string name_;
+	std::cin >> name_;
+	std::cout << "Hello, " << name_ << std::endl << "And what is yours? ";
+	std::cin >> name_;
+	std::cout << "Hello, " << name_ << "; nice to meet you too!" << std::endl;
+
     return 0;
 }
 
