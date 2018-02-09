@@ -22,8 +22,8 @@ int main()
 	// build the message that we intend to write
 	const string greeting = "Hello, " + name + "!";
 
-	// the number of blanks surrounding the greeting
-	const int pad = 1;
+	// exercise 2-1
+	const int pad = 0;
 
 	// the number of rows and columns to write
 	const int rows = pad * 2 + 3;
