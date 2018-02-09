@@ -22,12 +22,13 @@ int main()
 	// build the message that we intend to write
 	const string greeting = "Hello, " + name + "!";
 
-	// exercise 2-1
-	const int pad = 0;
+	// exercise 2-2
+	const int colPad = 10;
+	const int rowPad = 1;
 
 	// the number of rows and columns to write
-	const int rows = pad * 2 + 3;
-	const string::size_type cols = greeting.size() + pad * 2 + 2;
+	const int rows = rowPad * 2 + 3;
+	const string::size_type cols = greeting.size() + colPad * 2 + 2;
 
 	// write a blank line to separate the output from the input
 	cout << endl;
@@ -42,7 +43,7 @@ int main()
 		while (c != cols)
 		{
 			// is it time to write the greeting?
-			if (r == pad + 1 && c == pad + 1)
+			if (r == rowPad + 1 && c == colPad + 1)
 			{
 				cout << greeting;
 				c += greeting.size();
