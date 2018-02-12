@@ -53,19 +53,30 @@ int main()
 		while (c != cols)
 		{
 			// is it time to write the greeting?
-			if (r == pad + 1 && c == pad + 1)
+			if (r == pad + 1 && c == 1)
 			{
-				cout << greeting;
-				c += greeting.size();
+				// exercise 2-4
+				string padding(pad, ' ');
+				cout <<padding << greeting <<padding;
+				c =  c + greeting.size() + (pad*2);
 			}
 			else
 			{
 				// are we on the border?
 				if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
+				{
+					// exercise 2-4
 					cout << "*";
+					++c;
+				}
 				else
-					cout << " ";
-				++c;
+				{
+					// exercise 2-4
+					string::size_type blankLength = greeting.size() + (pad *2);
+					string blankLine(blankLength, ' ');
+					cout << blankLine;
+					c += blankLength;
+				}
 			}
 		}
 		cout << endl;
