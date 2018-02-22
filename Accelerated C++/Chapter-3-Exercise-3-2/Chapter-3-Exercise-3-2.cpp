@@ -27,22 +27,27 @@ int main()
 	// sort the numbers
 	std::sort(userInput.begin(), userInput.end());
 
-	// find mid position for entire collection and upper and lower sub collections
+	// find the mid position
 	size_t midPos = userInput.size() / 2;
-	size_t lowerQuartileEndIndex = midPos - 1;
-	size_t lowerMidPos = lowerQuartileEndIndex / 2;
-	size_t upperQuartileStartIndex = userInput.size() % 2 == 0 ?
-		midPos :
-		midPos + 1;
-	size_t upperMidPos = userInput.size() - ((userInput.size() - upperQuartileStartIndex) / 2);
+
+	// find the position for the upper and lower quartiles
+	size_t lowerQuartilePos = userInput.size() / 4;
+	size_t upperQuartilePos = 3 * userInput.size() / 4;
 
 	// compute upper and lower quartiles
-	double lowerQuartile = lowerQuartileEndIndex % 2 == 0 ?
-		userInput[lowerMidPos] :
-		(userInput[lowerMidPos] + userInput[lowerMidPos + 1]) / 2;
-	double upperQuartile = (userInput.size() - upperQuartileStartIndex) % 2 == 0 ?
-		(userInput[upperMidPos] + userInput[upperMidPos - 1]) / 2 :
-		userInput[upperMidPos - 1];
+	double lowerQuartile, upperQuartile = 0.0;
+	if (midPos % 2 == 0)
+	{
+		lowerQuartile = (userInput[lowerQuartilePos] + userInput[lowerQuartilePos - 1]) / 2;
+		upperQuartile = userInput.size() % 2 == 0 ?
+			(userInput[upperQuartilePos] + userInput[upperQuartilePos - 1]) / 2 :
+			(userInput[upperQuartilePos] + userInput[upperQuartilePos + 1]) / 2 ;
+	}
+	else
+	{
+		lowerQuartile = userInput[lowerQuartilePos];
+		upperQuartile = userInput[upperQuartilePos];
+	}
 
 	// output the results
 	std::cout << "Lower quartile is: " << lowerQuartile << " Upper quartile is: " << upperQuartile << std::endl;
