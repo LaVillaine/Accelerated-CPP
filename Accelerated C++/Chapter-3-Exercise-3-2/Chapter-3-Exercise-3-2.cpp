@@ -17,12 +17,13 @@ int main()
 	while (std::cin >> x)
 		userInput.push_back(x);
 
-	// check that the user provided at least 2 values
-	if (userInput.size() < 2)
+	// check that the user provided at least 4 values
+	if (userInput.size() < 4)
 	{
-		std::cout << std::endl << "You must enter at least 2 values. Please try again later. " << std::endl;
+		std::cout << std::endl << "You must enter at least 4 values. Please try again later. " << std::endl;
 		return 1;
 	}
+	bool collectionIsEven = userInput.size() % 2 == 0;
 
 	// sort the numbers
 	std::sort(userInput.begin(), userInput.end());
@@ -39,7 +40,7 @@ int main()
 	if (midPos % 2 == 0)
 	{
 		lowerQuartile = (userInput[lowerQuartilePos] + userInput[lowerQuartilePos - 1]) / 2;
-		upperQuartile = userInput.size() % 2 == 0 ?
+		upperQuartile = collectionIsEven ?
 			(userInput[upperQuartilePos] + userInput[upperQuartilePos - 1]) / 2 :
 			(userInput[upperQuartilePos] + userInput[upperQuartilePos + 1]) / 2 ;
 	}
@@ -48,6 +49,39 @@ int main()
 		lowerQuartile = userInput[lowerQuartilePos];
 		upperQuartile = userInput[upperQuartilePos];
 	}
+
+	// display quartiles
+	for (size_t i = 0; i != userInput.size(); ++i)
+	{
+		if (i == lowerQuartilePos || i == upperQuartilePos)
+		{
+			if (collectionIsEven)
+				std::cout << std::endl;
+			if (midPos % 2 == 0)
+			{
+				if (!collectionIsEven)
+				{
+					if (i == lowerQuartilePos)
+						std::cout << "\n " << userInput[i];
+					else
+						std::cout << " "  << userInput[i] << "\n";
+				}
+				else
+					std::cout << " " << userInput[i];
+			}
+			else if (!collectionIsEven)
+				std::cout << std::endl;
+		}
+		else if (i == midPos)
+		{
+			std::cout << std::endl;
+			if (collectionIsEven)
+				std::cout << " " << userInput[i];
+		}
+		else
+			std::cout << " " << userInput[i];
+	}
+	std::cout << std::endl;
 
 	// output the results
 	std::cout << "Lower quartile is: " << lowerQuartile << " Upper quartile is: " << upperQuartile << std::endl;
