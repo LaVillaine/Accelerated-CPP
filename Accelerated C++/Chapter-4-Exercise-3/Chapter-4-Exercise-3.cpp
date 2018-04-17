@@ -8,7 +8,7 @@
 
 int main()
 {
-	int maxVal = 100;
+	int maxVal = 1000;
 	std::streamsize maxWidth = (log10(maxVal) * 3) + 3;
 
 	for (int i = 1; i < maxVal; i++)
